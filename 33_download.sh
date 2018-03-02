@@ -5,6 +5,9 @@
 # 如果目录存在，下载结束后，如果成功，返回0，否则52
 
 
+
+
+download() {
 while :
 do
 	if [ $# -ne 2 ];then
@@ -14,10 +17,7 @@ do
 		break
 	fi
 done
-
-
-download() {
-if [ !-d $2];then
+if [ ! -d $2 ];then
 	while :
 	do
 		read -p "输入的目录不存在，是否创建[Y/N]:" n
