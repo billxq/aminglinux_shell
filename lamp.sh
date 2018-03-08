@@ -11,6 +11,20 @@ systemctl disable firewalld 1>/dev/null 2>&1
 echo "The firewall has been shut down."
 fi
 
+
+## change the repo
+change_repo() {
+    cd /etc/yum.repos.d/
+    mv *.repo *.repo.bk
+    curl -O  http://mirrors.aliyun.com/repo/Centos-7.repo
+    curl -O  http://mirrors.aliyun.com/repo/epel-7.repo
+    yum clean all
+    yum makecache
+    }
+
+
+
+
 ##To shut down selinux
 se_status=`getenforce`
 if [ $se_status == "1" ]
@@ -29,6 +43,8 @@ check_rpm() {
                 echo "$1 is already installed!"
         fi
 	}
+
+change_repo
 
 for pkgs in wget gcc perl perl-devel libaio libaio-devel pcre-devel zlib-devel pcre
 do
