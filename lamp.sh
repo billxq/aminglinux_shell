@@ -96,7 +96,7 @@ install_mysqld() {
 	case $mysql_v in
 	5.1)
 		cd /usr/local/src
-		[ ! -f mysql-5.1.73-linux-$ar-glibc23.tar.gz ] && wget http://mirrors.sohu.com/mysql/MySQL-5.1/mysql-5.1.73-linux-$ar-glibc23.tar.gz
+		[ ! -f mysql-5.1.73-linux-$ar-glibc23.tar.gz ] && wget -c http://mirrors.sohu.com/mysql/MySQL-5.1/mysql-5.1.73-linux-$ar-glibc23.tar.gz
 		tar zxf mysql-5.1.73-linux-$ar-glibc23.tar.gz
 		[ -d /usr/local/mysql ] && /bin/mv /usr/local/mysql /usr/local/mysql_`date +$s`
 		/bin/mv /usr/local/src/mysql-5.1.73-linux-$ar-glibc23 /usr/local/mysql
@@ -126,7 +126,7 @@ install_mysqld() {
 	5.6)
 		yum -y install autoconf
 		cd /usr/local/src
-		[ ! -f mysql-5.6.36-linux-glibc2.5-$ar.tar.gz ] && wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.36-linux-glibc2.5-$ar.tar.gz
+		[ ! -f mysql-5.6.36-linux-glibc2.5-$ar.tar.gz ] && wget -c http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.36-linux-glibc2.5-$ar.tar.gz
 		tar zxf mysql-5.6.36-linux-glibc2.5-$ar.tar.gz
 		[ -d /usr/local/mysql ] && /bin/mv /usr/local/mysql /usr/local/mysql_bak
 		/bin/mv /usr/local/src/mysql-5.6.36-linux-glibc2.5-$ar /usr/local/mysql
@@ -167,7 +167,7 @@ install_mysqld() {
 install_httpd() {
 	echo "It'll install httpd2.2 now!"
 	cd /usr/local/src
-	[ -f httpd-2.2.34.tar.gz ] || wget http://mirrors.sohu.com/apache/httpd-2.2.34.tar.gz
+	[ -f httpd-2.2.34.tar.gz ] || wget -c http://mirrors.sohu.com/apache/httpd-2.2.34.tar.gz
 	tar zxf httpd-2.2.34.tar.gz && cd httpd-2.2.34
 	./configure \
 	--prefix=/usr/local/apache2 \
@@ -187,7 +187,7 @@ install_php() {
 	case $php_v in
 	5.4)
 		cd /usr/local/src
-		[ -f php-5.4.22.tar.gz ] || wget http://mirrors.sohu.com/php/php-5.4.22.tar.gz
+		[ -f php-5.4.22.tar.gz ] || wget -c http://mirrors.sohu.com/php/php-5.4.22.tar.gz
 		tar zxf php-5.4.22.tar.gz && cd php-5.4.22
 		for i in bzip2-devel curl-devel db4-devel libjpeg-devel libpng-devel libXpm-devel gmp-devel libc-client-devel openldap-devel unixODBC-devel postgresql-devel sqlite-devel aspell-devel  net-snmp-devel libxslt-devel libxml2-devel pcre-devel mysql-devel unixODBC-devel postgresql-devel pspell-devel net-snmp-devel freetype-devel libmcrypt-devel
 		do
@@ -223,7 +223,7 @@ install_php() {
 		;;
 	5.6)
 		cd /usr/local/src
-		[ -f php-5.6.6.tar.gz ] || wget http://mirrors.sohu.com/php/php-5.6.6.tar.gz
+		[ -f php-5.6.6.tar.gz ] || wget -c http://mirrors.sohu.com/php/php-5.6.6.tar.gz
 		tar zxf php-5.6.6.tar.gz && cd php-5.6.6
 		for i in bzip2-devel curl-devel db4-devel libjpeg-devel libpng-devel libXpm-devel gmp-devel libc-client-devel openldap-devel unixODBC-devel postgresql-devel sqlite-devel aspell-devel  net-snmp-devel libxslt-devel libxml2-devel pcre-devel mysql-devel unixODBC-devel postgresql-devel pspell-devel net-snmp-devel freetype-devel libmcrypt-devel
 		do
