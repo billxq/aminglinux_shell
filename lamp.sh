@@ -17,7 +17,7 @@ change_repo() {
     cd /etc/yum.repos.d/
     mv *.repo *.repo.bk
     curl -O  http://mirrors.aliyun.com/repo/Centos-7.repo
-    curl -O  http://mirrors.aliyun.com/repo/epel-7.repo
+    rpm -Ivh https://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm
     yum clean all
     yum makecache
     }
