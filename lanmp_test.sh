@@ -73,7 +73,7 @@ check_rpm() {
 	}
 
 
-for pkgs in wget gcc perl perl-devel libaio libaio-devel pcre-devel zlib-devel pcre
+for pkgs in wget gcc perl perl-devel libaio libaio-devel pcre-devel zlib-devel pcre openssl openssl-devel
 do
         check_rpm $pkgs
 done
