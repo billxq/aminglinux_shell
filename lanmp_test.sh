@@ -72,6 +72,7 @@ check_rpm() {
         fi
 	}
 
+change_repo
 
 for pkgs in wget gcc perl perl-devel libaio libaio-devel pcre-devel zlib-devel pcre openssl openssl-devel
 do
