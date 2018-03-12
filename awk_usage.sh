@@ -21,3 +21,19 @@ echo "libstoragemgmt:x:997:994:daemon account for libstoragemgmt:/var/run/lsm:/s
 echo -e "libstoragemgmt:x:997:994:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin\nchrony:x:996:993::/var/lib/chrony:/sbin/nologin\nunbound:x:995:992:Unbound DNS resolver:/etc/unbound:/sbin/nologin" | awk 'END{print NR}'
 # 4. 累加
 seq 5 | awk 'BEGIN{sum=0;print "SUM:"}{print $1"+";sum=sum+$1}END{print "=="; print sum}'
+# 5. 过滤
+# awk 'NR < 5' 行号小于5的行
+# awk 'NR==1,NR==4' 行号在1-5行之间
+# awk '/linux/' 包含linux的行
+# awk '!/linux/' 不包含linux的行
+
+# 字段定界符
+# 1.加-F 明确指定一个定界符，默认为空格，如 awk -F":" file
+# 2.在BEGIN语句块中，可以用IFS=“delimiter”，如:
+# awk 'BEGIN{IFS=":"}{print $NF}' /etc/passwd
+
+# 循环
+# for(i=0;i<10;i++){print $i;}
+
+# tcp链接状态的统计，或者ip统计
+netstat -an |awk '/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}'
