@@ -428,7 +428,8 @@ install_nginx() {
 	tar zxvf nginx-1.10.3.tar.gz
 	cd nginx-1.10.3
 	./configure \
-	--prefix=/usr/local/nginx
+	--prefix=/usr/local/nginx \
+    --with-http_ssl_module
 	make && make install
 	cat > /etc/init.d/nginx <<EOF
 #!/bin/bash
