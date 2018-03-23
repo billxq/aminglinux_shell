@@ -1,7 +1,6 @@
 #!/bin/bash
 
-[ rpm -qa | grep vsftpd ] || echo "vsftpd service hasn't been installed. Installing now!"; yum -y install vsftpd db4* pam*
-[ rpm -qa | grep vsftpd ] && yum -y install db4-utils pam*
+echo "安装必要的包！"; yum -y install vsftpd db4* pam*
 echo "Configuring!"
 echo "建立虚拟账号相关的系统账号"
 useradd virftp -s /sbin/nologin
@@ -38,7 +37,7 @@ mkdir -p /home/virftp/test1
 touch /home/virftp/test1/hellotest1.txt
 chown -R virftp.virftp /home/virftp
 
-sed -ie '1s/^/auth sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login\naccount sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login\n/'  /etc/pam.d/vsftpd
+sed -ie '1s#^#auth sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login\naccount sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login\n#'  /etc/pam.d/vsftpd
 
 >/etc/vsftpd/vsftpd.conf
 cat > /etc/vsftpd/vsftpd.conf <<-EOF
